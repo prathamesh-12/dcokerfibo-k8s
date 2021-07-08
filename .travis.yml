@@ -7,7 +7,7 @@ services:
 before_install:
   - docker build -t prathamesh12/dockerfibo-test -f ./client/Dockerfile.dev ./client
 
-scripts:
+script:
   - docker run prathamesh12/dockerfibo-tests CI=true npm run test
 
 after_success:
