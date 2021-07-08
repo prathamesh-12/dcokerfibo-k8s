@@ -17,7 +17,7 @@ after_success:
   - docker build -t prathamesh12/dockerfibo-ngnix ./ngnix
 
   #login to docker
-  - docker login
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER_ID" --password-stdin
 
   #push to docker-hub
   - docker push prathamesh12/dockerfibo-client
