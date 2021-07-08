@@ -1,9 +1,11 @@
 sudo: required
+language: generic
+
 services:
   - docker
 
 before_install:
-  - docker build -t prathamesh12/dockerfibo-tests -f ./client/Dockerfile.dev ./client
+  - docker build -t prathamesh12/dockerfibo-test -f ./client/Dockerfile.dev ./client
 
 scripts:
   - docker run prathamesh12/dockerfibo-tests CI=true npm run test
