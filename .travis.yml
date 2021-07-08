@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t prathamesh12/dockerfibo-tests -f ./client/Dockerfile.dev
+  - docker build -f ./client/Dockerfile.dev -t prathamesh12/dockerfibo-tests ./client
 
 scripts:
   - docker run prathamesh12/dockerfibo-tests CI=true npm run test
@@ -13,3 +13,12 @@ after_success:
   - docker build -t prathamesh12/dockerfibo-server ./server
   - docker build -t prathamesh12/dockerfibo-worker ./worker
   - docker build -t prathamesh12/dockerfibo-ngnix ./ngnix
+
+  #login to docker
+  - docker login
+
+  #push to docker-hub
+  - docker push prathamesh12/dockerfibo-client
+  - docker push prathamesh12/dockerfibo-server
+  - docker push prathamesh12/dockerfibo-worker
+  - docker push prathamesh12/dockerfibo-ngnix
