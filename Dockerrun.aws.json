@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunversion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "prathamesh12/dockerfibo-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "prathamesh12/dockerfibo-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "ngnix",
+            "image": "prathamesh12/dockerfibo-ngnix",
+            "hostname": "ngnix",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
+        },
+        {
+            "name": "worker",
+            "image": "prathamesh12/dockerfibo-worker",
+            "hostname": "worker",
+            "essential": false
+        }
+    ]
+}

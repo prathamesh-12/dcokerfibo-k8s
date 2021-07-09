@@ -24,3 +24,15 @@ after_success:
   - docker push prathamesh12/dockerfibo-server
   - docker push prathamesh12/dockerfibo-worker
   - docker push prathamesh12/dockerfibo-ngnix
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'ap-south-1'
+  app: 'dockerfibo'
+  env: 'Dockerfibo-env'
+  bucket_name: 'elasticbeanstalk-ap-south-1-812122552477'
+  bucket_path: 'dockerfibo'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
