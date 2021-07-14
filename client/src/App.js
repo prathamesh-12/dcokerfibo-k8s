@@ -1,24 +1,33 @@
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Fib from './components/Fib';
-import OtherPage from './components/OtherPage';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import OtherPage from './OtherPage';
+import Fib from './Fib';
 
 function App() {
   return (
-    <BrowserRouter>   
+    <Router>
       <div className="App">
         <header className="App-header">
-          <Link to="/">Home Page</Link>
+          <img src={logo} className="App-logo" alt="logo" />
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React 3
+          </a>
+          <Link to="/">Home</Link>
           <Link to="/otherpage">Other Page</Link>
         </header>
         <div>
-          <Route path="/" exact component={Fib}/>
-          <Route path="/otherpage" exact component={OtherPage}/>
+          <Route exact path="/" component={Fib} />
+          <Route path="/otherpage" component={OtherPage} />
         </div>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 
